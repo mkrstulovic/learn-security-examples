@@ -1,1 +1,15 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The vulnerability here is how the session is being created and defined.
+The insecure code sends a cookie to the user with the session ID created by the server.
+A malicious user can find the session ID from the cookie and use that to gain access.
+Furthermore, if a user is logged in, the session can be used to hit sensitive endpoints.
+
+The secure version of the code sets cookie settings differently.
+It creates session using a variable provided when the server starts (and isn't hard-coded).
+More importantly, httpOnly is set to true, so generated cookies are not programmatically readable.
+Furthermore, the session can be configured to set session only if the server and client are on
+the same site (no cross-origin), so sessions received from that source can be trusted.
+
+This kind of Spoofing attack violates Confidentiality, and can impact Integrity and Availability,
+depending on how the malicious user utilizes their access to a specific application.

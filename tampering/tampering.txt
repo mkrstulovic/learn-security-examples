@@ -1,0 +1,10 @@
+The insecure version of this code allows attackers to put code snippets within the name that they can enter on the site.
+This will allow a malicious user to enter a script that will be executed by the insecure code.
+The insecure code will run the malicious code due to how it evaluates the javascript assuming that it is a name and not an actual script.
+
+The secure version of the code sanitizes the input and escapes all of the html code from the user input.
+This ensures that no scripts provided as names will be run as code.
+
+Tampering can violate any of the 3 CIA properties depending on what the altered inputs do.
+If a script is left unsanitized, it can execute and violate any of the CIA properties.
+At base, this is violating Integrity properties due to how it is changing data when it is being processed.
