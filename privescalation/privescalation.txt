@@ -1,0 +1,12 @@
+- Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The insecure code uses only the user-provided input to edit the role of a user with a specific ID.
+Due to this, any user can be made admin or an admin can be made a user. Privileges can be manipulated in both ways.
+The secure version uses session to store a user ID, and then confirms that the given user is an admin.
+This prevents users from editing the roles of others and changing privileges.
+
+
+- What additional security mechanisms can you incorporate to prevent such attacks?
+
+We can add 2FA to verify users are logged in properly and using authorized privileges.
+We can also do checking within the code of the privileges and keep roles hidden/disallow changes to roles.

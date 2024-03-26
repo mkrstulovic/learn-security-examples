@@ -1,2 +1,15 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
+
+In the insecure code, a user can manually enter any user ID and then send anything they want as a message.
+Users can then lie about the messages that they are sending or deny that they were the user behind the message.
+They can send the message as another user and then hide the fact that they sent it.
+The secure version logs every message sent with the method type, url, and the IP address of the sender.
+This allows admins to see the logs of the messages sent and the identifier of IP addresses.
+We ensure that our app does not crash when we write to log by using good error handling.
+
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+We can use libraries that automatically handle the logging of requests to our server.
+We can also regularly check logs for flagged logs manually or via automated flagging script.
+Store log files in database.

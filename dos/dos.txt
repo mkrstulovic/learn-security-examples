@@ -1,2 +1,13 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The insecure code uses an id provided in the get request sent via userinfo.
+Providing any non-properly formatted ID or a regular expression will result in a type cast error.
+This causes the insecure code to crash due to a lack of input sanitization and no error handling.
+The secure version checks that an actual user is found via the query with the ID.
+If the ID is bad, it fails to find a user and the secure code reports that a bad ID was provided.
+
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+We can also sanitize the ID provided to the code, or even move away from using IDs.
+Provide rate limiting to stop one user from holding priority on requests by using a continuous script.
+Middleware to stop taking too many requests from one person.

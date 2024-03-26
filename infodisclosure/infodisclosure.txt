@@ -1,3 +1,18 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-Which CIA property does tampering violate?
+
+The insecure code does not sanitize the username provided by the get request.
+By not doing so, it allows malicious users to inject NoSQL code and get more information in the response.
+Furthermore, it sends a response whether the server could find the username, and doesn't error out if the get request does.
+The secure code sanitizes the input and also encapsulates the request response in a try-catch.
+It also ensures that the username given is a string, eliminating the opportunity to match via pattern.
+
+
+Which CIA property does info disclosure violate?
+
+Information Disclosure violates Confidentiality.
+
+
 What additional security mechanisms can you incorporate?
+
+You can additionally hide information from request URLs, handling the specific formation of the URL on the backend.
+This would prevent users from being able to take advantage of request URL format.
